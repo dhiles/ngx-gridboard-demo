@@ -9,7 +9,7 @@ import { HeroJobAdComponent } from './components/hero-job-ad.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'demo app';
+  title = 'the ngx-gridboard demo app';
   laneChange: LaneChange;
 
   options = {
