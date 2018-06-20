@@ -1,0 +1,8 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <div *ngIf="laneChange"> size={{ laneChange.mq }} lanes={{ laneChange.lanes }}</div>
+  <button (click)="getItems()">get items</button>
+</div>
+<gb-gridboard #gridboard [items]="items" [options]="options" (laneChange)="onLaneChange($event)"></gb-gridboard>
