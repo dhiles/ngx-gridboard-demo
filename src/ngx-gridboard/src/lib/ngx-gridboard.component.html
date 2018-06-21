@@ -1,0 +1,14 @@
+<div #gridContainer class="grid-container">
+	<ul id="grid" class="grid">
+		<div class="position-highlight" style="display: none;">
+			<div class="inner"></div>
+		</div>
+		<div *ngFor="let item of items; let i = index">
+			<gb-item-container [item]="item" gbDrag [highlightColor]="options.highlightColor" [defaultColor]="'yellow'" [(activeItem)]="activeItem" (activeItemChange)="activeItemChange(item)"
+			 (mouseDownEmitter)="itemMouseDown($event)" [item]="item" #dragItem [attr.data-id]="i"
+			 [attr.data-x]="item.x" [attr.data-y]="item.y" [attr.data-w]="item.w" [attr.data-h]="item.h" class="ui-draggable myitem">
+			</gb-item-container>
+		</div>
+	</ul>
+
+</div>

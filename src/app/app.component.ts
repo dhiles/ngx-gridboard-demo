@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { PanelItem, LaneChange } from 'ngx-gridboard';
 import { HeroProfileComponent } from './components/hero-profile.component';
 import { HeroJobAdComponent } from './components/hero-job-ad.component';
+import { ChartComponent } from './components/chart.component';
+
 
 @Component({
   selector: 'app-root',
@@ -28,7 +30,7 @@ export class AppComponent {
   items = [
     { id: 0, w: 3, h: 1, x: 0, y: 0, panelItem: new PanelItem(HeroProfileComponent, { name: 'Bombasto', bio: 'Brave as they come' }) },
     {
-      id: 1, w: 1, h: 1, x: 4, y: 0, panelItem: new PanelItem(HeroJobAdComponent, {
+      id: 1, w: 1, h: 1, x: 4, y: 0, panelItem: new PanelItem(ChartComponent, {
         headline: 'Hiring for several positions',
         body: 'Submit your resume today!'
       })

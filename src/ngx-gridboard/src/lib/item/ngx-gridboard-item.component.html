@@ -1,0 +1,22 @@
+<div *ngIf="activated">
+    <div class="n-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+     [id]="item.id"></div>
+    <div class="ne-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+     [id]="item.id"></div>
+    <div class="se-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+     [id]="item.id"></div>
+    <div class="e-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+     [id]="item.id"></div>
+    <div class="nw-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+     [id]="item.id"></div>
+    <div class="sw-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+     [id]="item.id"></div>
+    <div class="w-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+     [id]="item.id"></div>
+    <div class="s-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+     [id]="item.id"></div>
+</div>
+<div class="inner" #inner>
+    <ng-template gbPanelHost></ng-template>
+</div>
+
