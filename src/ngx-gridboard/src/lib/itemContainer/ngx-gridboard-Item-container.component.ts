@@ -10,11 +10,12 @@ import { Item } from '../item';
 
 @Component({
   selector: 'gb-item-container',
-  templateUrl: './ngx-gridboard-item.component.html',
-  styleUrls: ['./ngx-gridboard-item.component.css']
+  templateUrl: './ngx-gridboard-item-container.component.html',
+  styleUrls: ['./ngx-gridboard-item-container.component.css']
 })
 export class NgxGridboardItemContainerComponent implements OnInit {
    @Input() item: Item;
+   @Output() mouseDownEmitter: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -25,6 +26,10 @@ export class NgxGridboardItemContainerComponent implements OnInit {
 
   ngOnInit() {
 //    this.loadComponent();
+  }
+
+  itemResizeMouseDown(result: any) {
+    this.mouseDownEmitter.emit(result);
   }
 
   resize() {
