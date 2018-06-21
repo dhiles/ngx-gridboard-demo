@@ -16,7 +16,7 @@ import { PanelItem } from './panel/panel-item';
 import { PanelDirective } from './panel/panel.directive';
 import { PanelComponent } from './panel/panel.component';
 import { GridList, GridListHelper } from './gridList/gridList';
-import { NgxGridboardService } from './ngx-gridboard.service'; 
+import { NgxGridboardService } from './ngx-gridboard.service';
 
 export interface Coords {
   x: number;
@@ -127,7 +127,7 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
 
     this.media.asObservable()
       .pipe(
-        map((change: MediaChange) => change.mqAlias )
+        map((change: MediaChange) => change.mqAlias)
       ).subscribe((mq) => this.loadResponsiveContent(mq));
 
   }
@@ -138,7 +138,7 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
       lanes = this.options.mediaQueryLanes[mq];
     }
     this.resizeGrid(lanes);
-    this.laneChange.emit({mq: mq, lanes: lanes});
+    this.laneChange.emit({ mq: mq, lanes: lanes });
   }
 
   init() {
@@ -259,11 +259,11 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
     const self = this;
     for (let i = 0; i < self.items.length; i++) {
       this.items[i].panelItem.gridboardItem.resize();
-    //  self.renderer.setStyle(self.items[i].elementRef.nativeElement, 'width', self._getItemWidth(self.items[i]) + 'px');
-    //  self.renderer.setStyle(self.items[i].elementRef.nativeElement, 'height', self._getItemHeight(self.items[i]) + 'px');
-    //  if (self.options.heightToFontSizeRatio) {
-    //    self.renderer.setStyle(self.items[i].elementRef.nativeElement, 'font-size', self.ngxGridboardService.fontSize);
-    //  }
+      //  self.renderer.setStyle(self.items[i].elementRef.nativeElement, 'width', self._getItemWidth(self.items[i]) + 'px');
+      //  self.renderer.setStyle(self.items[i].elementRef.nativeElement, 'height', self._getItemHeight(self.items[i]) + 'px');
+      //  if (self.options.heightToFontSizeRatio) {
+      //    self.renderer.setStyle(self.items[i].elementRef.nativeElement, 'font-size', self.ngxGridboardService.fontSize);
+      //  }
     }
   }
 
@@ -304,34 +304,20 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
     this.draggableItem = null;
   }
 
-  itemMouseDown(result: any) {
-    result.event.stopPropagation();
-    const self = this;
-    this.draggableItem = this.getItemById(result.id);
-    this.draggableItem.move = true;
-    this.onStart();
-  }
-
   itemResizeMouseUp(result: any) {
   }
 
 
-  itemResizeMouseDown(result: any) {
+  itemMouseDown(result: any) {
     result.event.stopPropagation();
-    this.draggableItem = this.getItemById(result.id);
-    this.draggableItem.resize = true;
-    this.draggableItem.resizeClass = result.event.srcElement.className;
-    this.onStart();
-  }
-
-  getItemById(id: number): any {
-    let item = null;
-    for (let i = 0; i < this.items.length && item === null; i++) {
-      if (this.items[i].id === id) {
-        item = this.items[i];
-      }
+    this.draggableItem = result.item; 
+    if (result.resize) {
+      this.draggableItem.resize = true;
+      this.draggableItem.resizeClass = result.event.srcElement.className;
+    } else {
+      this.draggableItem.move = true;
     }
-    return item;
+    this.onStart();
   }
 
   getRelativeCoords(pos: Coords, target: any) {

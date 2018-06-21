@@ -58,6 +58,8 @@ export class NgxGridboardItemComponent implements OnInit {
   }
 
   itemResizeMouseDown(result: any) {
+    result.resize = true;
+    result.item = this.item;
     this.mouseDownEmitter.emit(result);
   }
 

@@ -15,7 +15,50 @@ import { Item } from '../item';
 })
 export class NgxGridboardItemContainerComponent implements OnInit {
    @Input() item: Item;
+   @Input() defaultColor: string;
+   @Input() highlightColor: string; 
    @Output() mouseDownEmitter: EventEmitter<any> = new EventEmitter<any>();
+   activeItemValue: Item;
+
+   @Output()
+   activeItemChange = new EventEmitter<Item>();
+ 
+   @Input()
+   get activeItem() {
+     return this.activeItemValue;
+   }
+ 
+   set activeItem(val) {
+     this.activeItemValue = val;
+     this.activeItemChange.emit(this.activeItemValue);
+   }
+ 
+   @HostListener('mouseenter') onMouseEnter() {
+     if (!this.activeItem) {
+       this.highlight(this.highlightColor || this.defaultColor || 'yellow');
+     }
+   }
+ 
+   @HostListener('mouseleave') onMouseLeave() {
+     if (!this.activeItem) {
+       this.highlight(null);
+     }
+   }
+ 
+   @HostListener('mousedown', ['$event']) onMouseDown(event: any) {
+     if (!this.activeItem) {
+       this.activeItem = this.item;
+       this.highlight(this.highlightColor || this.defaultColor || 'yellow');
+       this.mouseDownEmitter.emit({ event: event, id: this.item.id, item: this.item });
+     }
+   }
+ 
+   @HostListener('mouseup') onMouseUp() {
+     if (this.activeItem === this.item) {
+       this.highlight(null);
+     }
+   }
+ 
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -27,6 +70,11 @@ export class NgxGridboardItemContainerComponent implements OnInit {
   ngOnInit() {
 //    this.loadComponent();
   }
+
+  private highlight(color: string) {
+    this.elementRef.nativeElement.style.backgroundColor = color;
+  }
+
 
   itemResizeMouseDown(result: any) {
     this.mouseDownEmitter.emit(result);
