@@ -3,8 +3,8 @@
 		<div #positionHighlightItem class="position-highlight">
 		</div>
 		<div *ngFor="let item of items; let i = index">
-			<gb-item-container (mouseDownEmitter)="itemMouseDown($event)" [item]="item" [highlightColor]="options.highlightColor" [defaultColor]="'yellow'" [(activeItem)]="activeItem" (activeItemChange)="activeItemChange(item)" #dragItem [attr.data-id]="i"
-			 [attr.data-x]="item.x" [attr.data-y]="item.y" [attr.data-w]="item.w" [attr.data-h]="item.h" class="ui-draggable myitem">
+			<gb-item-container  #dragItem (mouseDownEmitter)="itemMouseDown($event)" [item]="item" [highlightColor]="options.highlightColor" [defaultColor]="'yellow'" [(activeItem)]="activeItem" (activeItemChange)="activeItemChange(item)" 
+			  class="ui-draggable myitem">
 			</gb-item-container>
 		</div>
 	</ul>

@@ -68,7 +68,6 @@ export class NgxGridboardItemContainerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-//    this.loadComponent();
   }
 
   private highlight(color: string) {

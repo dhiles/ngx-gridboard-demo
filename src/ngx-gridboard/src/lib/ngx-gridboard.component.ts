@@ -17,6 +17,7 @@ import { PanelDirective } from './panel/panel.directive';
 import { PanelComponent } from './panel/panel.component';
 import { GridList, GridListHelper } from './gridList/gridList';
 import { NgxGridboardService } from './ngx-gridboard.service';
+import { NgxGridboardItemContainerComponent } from './itemContainer/ngx-gridboard-item-container.component'
 
 export interface Coords {
   x: number;
@@ -160,8 +161,7 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
   updateItemsWithElementRefs() {
     const self = this;
     this.itemElementRefs.forEach(function (itemContainer: any, i) {
-      const id = itemContainer.elementRef.nativeElement.getAttribute('data-id');
-      self.items[id].elementRef = itemContainer.elementRef;
+      itemContainer.item.elementRef = itemContainer.elementRef;
     });
   }
 
