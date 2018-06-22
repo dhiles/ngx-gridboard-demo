@@ -143,19 +143,29 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
   }
 
   init() {
-    // Read items and their meta data. Ignore other list elements (like the
-    // position highlight)
-    const self = this;
     this.updateItemsWithElementRefs();
     this.maxItemWidth = this.getMaxItemWidth();
     this.maxItemHeight = this.getMaxItemHeight();
-
-    // Used to highlight a position an element will land on upon drop
-    //this.positionHighlight = this.elementRef.nativeElement.querySelector('.position-highlight');
     this.removePositionHighlight();
-
     this.initGridList();
     this.reflow();
+  }
+
+  reflow() {
+    this.calculateCellSize();
+    this.render();
+  }
+
+  render() {
+    this.applySizeToItems();
+    this.applyPositionToItems();
+  }
+
+  initGridList() {
+    this.gridList = new GridList(this.items, {
+      lanes: this.options.lanes,
+      direction: this.options.direction
+    });
   }
 
   updateItemsWithElementRefs() {
@@ -186,29 +196,10 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
     return maxHeight;
   }
 
-  initGridList() {
-    // Create instance of GridList (decoupled lib for handling the grid
-    // positioning and sorting post-drag and dropping)
-    this.gridList = new GridList(this.items, {
-      lanes: this.options.lanes,
-      direction: this.options.direction
-    });
-  }
-
   resizeGrid(lanes: number) {
     this.gridList.resizeGrid(lanes);
     this.updateGridSnapshot();
     this.render();
-  }
-
-  reflow() {
-    this.calculateCellSize();
-    this.render();
-  }
-
-  render() {
-    this._applySizeToItems();
-    this._applyPositionToItems();
   }
 
   resizeItem(item: any, width: number, height: number) {
@@ -219,8 +210,8 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
   }
 
   highlightPositionForItem(item: Item) {
-    this.renderer.setStyle(this.positionHighlight.nativeElement, 'width', this._getItemWidth(item) + 'px');
-    this.renderer.setStyle(this.positionHighlight.nativeElement, 'height', this._getItemHeight(item) + 'px');
+    this.renderer.setStyle(this.positionHighlight.nativeElement, 'width', this.getItemWidth(item) + 'px');
+    this.renderer.setStyle(this.positionHighlight.nativeElement, 'height', this.getItemHeight(item) + 'px');
     this.renderer.setStyle(this.positionHighlight.nativeElement, 'left', item.x * this.ngxGridboardService.cellWidth + 'px');
     this.renderer.setStyle(this.positionHighlight.nativeElement, 'top', item.y * this.ngxGridboardService.cellHeight + 'px');
     this.renderer.setStyle(this.positionHighlight.nativeElement, 'display', 'inline');
@@ -247,27 +238,22 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
     }
   }
 
-  _getItemWidth(item: Item) {
+  getItemWidth(item: Item) {
     return item.w * this.ngxGridboardService.cellWidth;
   }
 
-  _getItemHeight(item: Item) {
+  getItemHeight(item: Item) {
     return item.h * this.ngxGridboardService.cellHeight;
   }
 
-  _applySizeToItems() {
+  applySizeToItems() {
     const self = this;
     for (let i = 0; i < self.items.length; i++) {
       this.items[i].panelItem.gridboardItem.resize();
-      //  self.renderer.setStyle(self.items[i].elementRef.nativeElement, 'width', self._getItemWidth(self.items[i]) + 'px');
-      //  self.renderer.setStyle(self.items[i].elementRef.nativeElement, 'height', self._getItemHeight(self.items[i]) + 'px');
-      //  if (self.options.heightToFontSizeRatio) {
-      //    self.renderer.setStyle(self.items[i].elementRef.nativeElement, 'font-size', self.ngxGridboardService.fontSize);
-      //  }
     }
   }
 
-  _applyPositionToItems() {
+  applyPositionToItems() {
     const self = this;
     // TODO: Implement group separators
     for (let i = 0; i < self.items.length; i++) {
@@ -310,7 +296,7 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
 
   itemMouseDown(result: ItemMouseDownEvent) {
     result.event.stopPropagation();
-    this.draggableItem = result.item; 
+    this.draggableItem = result.item;
     if (result.resize) {
       this.draggableItem.resize = true;
       this.draggableItem.resizeType = result.resizeType;
@@ -394,7 +380,7 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
       this.gridList.moveItemToPosition(item, newPosition);
 
       // Visually update item positions and highlight shape
-      this._applyPositionToItems();
+      this.applyPositionToItems();
       this.highlightPositionForItem(item);
     }
   }
@@ -404,7 +390,7 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
       this.draggableItem.move = false;
       this.updateGridSnapshot();
       this._previousDragPosition = null;
-      this._applyPositionToItems();
+      this.applyPositionToItems();
       this.removePositionHighlight();
     } else if (this.draggableItem.resize) {
       const offsetWidth = this.draggableItem.elementRef.nativeElement.offsetWidth === 0 ?

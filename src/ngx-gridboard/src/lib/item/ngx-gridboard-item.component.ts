@@ -15,6 +15,7 @@ import { Item, ItemMouseDownEvent } from '../item';
 })
 export class NgxGridboardItemComponent implements OnInit {
   activated = false;
+  panelComponent: PanelComponent;
   @Input() item: Item;
   @Input() activeItem: Item;
   @Output() mouseDownEmitter: EventEmitter<any> = new EventEmitter<any>();
@@ -53,6 +54,7 @@ export class NgxGridboardItemComponent implements OnInit {
     viewContainerRef.clear();
 
     const componentRef = viewContainerRef.createComponent(componentFactory);
+    this.panelComponent = <PanelComponent>componentRef.instance;
     (<PanelComponent>componentRef.instance).data = this.item.panelItem.data;
     this.item.panelItem.gridboardItem = this;
   }
@@ -62,6 +64,9 @@ export class NgxGridboardItemComponent implements OnInit {
   }
 
   resize() {
+    if (this.panelComponent.handleResize) {
+      this.panelComponent.handleResize();
+    }
     this.renderer.setStyle(this.item.elementRef.nativeElement, 'width', (this.item.w*this.ngxGridboardService.cellWidth) + 'px');
     this.renderer.setStyle(this.item.elementRef.nativeElement, 'height', (this.item.h*this.ngxGridboardService.cellHeight) + 'px');
     if (this.ngxGridboardService.heightToFontSizeRatio) {
