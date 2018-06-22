@@ -11,3 +11,9 @@ export interface Item {
     elementRef: ElementRef;
     panelItem: PanelItem;
   }
+
+  export interface ItemMouseDownEvent {
+    event: any;
+    item: Item;
+    resize: boolean;
+  }

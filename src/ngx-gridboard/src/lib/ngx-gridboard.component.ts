@@ -11,7 +11,7 @@ import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Observable, Subject, fromEvent } from 'rxjs';
 import { map, filter, catchError, mergeMap, debounceTime } from 'rxjs/operators';
 import { containsTree } from '@angular/router/src/url_tree';
-import { Item } from './item';
+import { Item, ItemMouseDownEvent } from './item';
 import { PanelItem } from './panel/panel-item';
 import { PanelDirective } from './panel/panel.directive';
 import { PanelComponent } from './panel/panel.component';
@@ -308,7 +308,7 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
   }
 
 
-  itemMouseDown(result: any) {
+  itemMouseDown(result: ItemMouseDownEvent) {
     result.event.stopPropagation();
     this.draggableItem = result.item; 
     if (result.resize) {

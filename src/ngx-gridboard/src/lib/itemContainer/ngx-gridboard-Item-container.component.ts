@@ -6,7 +6,7 @@ import { NgxGridboardService } from '../ngx-gridboard.service';
 import { PanelItem } from '../panel/panel-item';
 import { PanelDirective } from '../panel/panel.directive';
 import { PanelComponent } from '../panel/panel.component';
-import { Item } from '../item';
+import { Item, ItemMouseDownEvent } from '../item';
 
 @Component({
   selector: 'gb-item-container',
@@ -17,7 +17,7 @@ export class NgxGridboardItemContainerComponent implements OnInit {
    @Input() item: Item;
    @Input() defaultColor: string;
    @Input() highlightColor: string; 
-   @Output() mouseDownEmitter: EventEmitter<any> = new EventEmitter<any>();
+   @Output() mouseDownEmitter: EventEmitter<ItemMouseDownEvent> = new EventEmitter<any>();
    activeItemValue: Item;
 
    @Output()
@@ -49,7 +49,7 @@ export class NgxGridboardItemContainerComponent implements OnInit {
      if (!this.activeItem) {
        this.activeItem = this.item;
        this.highlight(this.highlightColor || this.defaultColor || 'yellow');
-       this.mouseDownEmitter.emit({ event: event, id: this.item.id, item: this.item });
+       this.mouseDownEmitter.emit({ event: event, item: this.item, resize: false });
      }
    }
  
@@ -76,7 +76,7 @@ export class NgxGridboardItemContainerComponent implements OnInit {
   }
 
 
-  itemResizeMouseDown(result: any) {
+  itemResizeMouseDown(result: ItemMouseDownEvent) {
     this.mouseDownEmitter.emit(result);
   }
 

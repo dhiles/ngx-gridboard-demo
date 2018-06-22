@@ -6,7 +6,7 @@ import { NgxGridboardService } from '../ngx-gridboard.service';
 import { PanelItem } from '../panel/panel-item';
 import { PanelDirective } from '../panel/panel.directive';
 import { PanelComponent } from '../panel/panel.component';
-import { Item } from '../item';
+import { Item, ItemMouseDownEvent } from '../item';
 
 @Component({
   selector: 'gb-item',
@@ -57,9 +57,7 @@ export class NgxGridboardItemComponent implements OnInit {
     this.item.panelItem.gridboardItem = this;
   }
 
-  itemResizeMouseDown(result: any) {
-    result.resize = true;
-    result.item = this.item;
+  itemResizeMouseDown(result: ItemMouseDownEvent) {
     this.mouseDownEmitter.emit(result);
   }
 
