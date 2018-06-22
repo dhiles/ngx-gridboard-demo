@@ -1,19 +1,19 @@
 <div *ngIf="activated">
-    <div gbResize [resizeType]="n-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="'n-resize-handle'" class="n-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div gbResize [resizeType]="ne-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="'ne-resize-handle'" class="ne-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div gbResize [resizeType]="se-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="'se-resize-handle'" class="se-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div gbResize [resizeType]="e-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="'e-resize-handle'" class="e-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div gbResize [resizeType]="nw-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="'nw-resize-handle'" class="nw-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div gbResize [resizeType]="sw-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="'sw-resize-handle'" class="sw-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div gbResize [resizeType]="w-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="'w-resize-handle'" class="w-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div gbResize [resizeType]="s-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="'s-resize-handle'" class="s-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
 </div>
 <div class="inner" #inner>
