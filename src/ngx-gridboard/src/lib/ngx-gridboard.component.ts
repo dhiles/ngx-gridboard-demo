@@ -313,7 +313,7 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
     this.draggableItem = result.item; 
     if (result.resize) {
       this.draggableItem.resize = true;
-      this.draggableItem.resizeClass = result.event.srcElement.className;
+      this.draggableItem.resizeType = result.resizeType;
     } else {
       this.draggableItem.move = true;
     }
@@ -336,12 +336,12 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
       this.onDrag(this.draggableItem);
     } else if (item.resize) {
       const relativeCoords = this.getRelativeCoords(pos, this.gridContainer.nativeElement);
-      if (item.resizeClass === 'se-resize-handle' || item.resizeClass === 'e-resize-handle' || item.resizeClass === 'ne-resize-handle') {
+      if (item.resizeType === 'se-resize-handle' || item.resizeType === 'e-resize-handle' || item.resizeType === 'ne-resize-handle') {
         self.renderer.setStyle(item.elementRef.nativeElement, 'width',
           (relativeCoords.x - item.elementRef.nativeElement.offsetLeft) + 10 + 'px');
       }
 
-      if (item.resizeClass === 'w-resize-handle' || item.resizeClass === 'nw-resize-handle' || item.resizeClass === 'sw-resize-handle') {
+      if (item.resizeType === 'w-resize-handle' || item.resizeType === 'nw-resize-handle' || item.resizeType === 'sw-resize-handle') {
         let right = (item.x + item.w) * this.ngxGridboardService.cellHeight;
         const left = relativeCoords.x - 5;
         let width = right - left;
@@ -353,7 +353,7 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
         self.renderer.setStyle(item.elementRef.nativeElement, 'width', width + 'px');
       }
 
-      if (item.resizeClass === 'ne-resize-handle' || item.resizeClass === 'n-resize-handle' || item.resizeClass === 'nw-resize-handle') {
+      if (item.resizeType === 'ne-resize-handle' || item.resizeType === 'n-resize-handle' || item.resizeType === 'nw-resize-handle') {
         const bottom = (item.y + item.h) * this.ngxGridboardService.cellHeight;
         let top = relativeCoords.y - 5;
         let height = bottom - top;
@@ -365,7 +365,7 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
         self.renderer.setStyle(item.elementRef.nativeElement, 'height', height + 'px');
       }
 
-      if (item.resizeClass === 'se-resize-handle' || item.resizeClass === 's-resize-handle' || item.resizeClass === 'sw-resize-handle') {
+      if (item.resizeType === 'se-resize-handle' || item.resizeType === 's-resize-handle' || item.resizeType === 'sw-resize-handle') {
         self.renderer.setStyle(item.elementRef.nativeElement, 'height',
           (relativeCoords.y - item.elementRef.nativeElement.offsetTop) + 10 + 'px');
       }

@@ -15,5 +15,6 @@ export interface Item {
   export interface ItemMouseDownEvent {
     event: any;
     item: Item;
-    resize: boolean;
+    resize?: boolean;
+    resizeType?: string;
   }

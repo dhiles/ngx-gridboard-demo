@@ -1,19 +1,19 @@
 <div *ngIf="activated">
-    <div class="n-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="n-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div class="ne-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="ne-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div class="se-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="se-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div class="e-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="e-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div class="nw-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="nw-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div class="sw-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="sw-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div class="w-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="w-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
-    <div class="s-resize-handle" gbResize (mouseDownEmitter)="itemResizeMouseDown($event)" 
+    <div gbResize [resizeType]="s-resize-handle" (mouseDownEmitter)="itemResizeMouseDown($event)" 
      [item]="item"></div>
 </div>
 <div class="inner" #inner>
