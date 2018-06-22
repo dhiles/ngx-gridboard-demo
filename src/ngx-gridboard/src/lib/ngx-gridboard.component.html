@@ -1,7 +1,6 @@
 <div #gridContainer class="grid-container">
 	<ul id="grid" class="grid">
-		<div class="position-highlight" style="display: none;">
-			<div class="inner"></div>
+		<div #positionHighlightItem class="position-highlight">
 		</div>
 		<div *ngFor="let item of items; let i = index">
 			<gb-item-container (mouseDownEmitter)="itemMouseDown($event)" [item]="item" [highlightColor]="options.highlightColor" [defaultColor]="'yellow'" [(activeItem)]="activeItem" (activeItemChange)="activeItemChange(item)" #dragItem [attr.data-id]="i"

@@ -46,6 +46,7 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
   @Input() options: any;
   @Output() laneChange: EventEmitter<LaneChange> = new EventEmitter();
   @ViewChild('gridContainer') gridContainer: ElementRef;
+  @ViewChild('positionHighlightItem') positionHighlight: ElementRef;
   @ViewChildren('dragItem') itemElementRefs: QueryList<ElementRef>;
   @ViewChild('highlightItem') dragElement: ElementRef;
   @ViewChild('innerContent') innerContent: ElementRef;
@@ -63,7 +64,6 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
   previousDragPosition: Coords = null;
   maxItemWidth: number;
   maxItemHeight: number;
-  positionHighlight: ElementRef;
 
   _previousDragPosition: any;
   @HostListener('mouseup') onMouseUp() {
@@ -150,7 +150,7 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
     this.maxItemHeight = this.getMaxItemHeight();
 
     // Used to highlight a position an element will land on upon drop
-    this.positionHighlight = this.elementRef.nativeElement.querySelector('.position-highlight');
+    //this.positionHighlight = this.elementRef.nativeElement.querySelector('.position-highlight');
     this.removePositionHighlight();
 
     this.initGridList();
@@ -219,19 +219,19 @@ export class NgxGridboardComponent implements OnInit, AfterViewInit {
   }
 
   highlightPositionForItem(item: Item) {
-    this.renderer.setStyle(this.positionHighlight, 'width', this._getItemWidth(item) + 'px');
-    this.renderer.setStyle(this.positionHighlight, 'height', this._getItemHeight(item) + 'px');
-    this.renderer.setStyle(this.positionHighlight, 'left', item.x * this.ngxGridboardService.cellWidth + 'px');
-    this.renderer.setStyle(this.positionHighlight, 'top', item.y * this.ngxGridboardService.cellHeight + 'px');
-    this.renderer.setStyle(this.positionHighlight, 'display', 'inline');
+    this.renderer.setStyle(this.positionHighlight.nativeElement, 'width', this._getItemWidth(item) + 'px');
+    this.renderer.setStyle(this.positionHighlight.nativeElement, 'height', this._getItemHeight(item) + 'px');
+    this.renderer.setStyle(this.positionHighlight.nativeElement, 'left', item.x * this.ngxGridboardService.cellWidth + 'px');
+    this.renderer.setStyle(this.positionHighlight.nativeElement, 'top', item.y * this.ngxGridboardService.cellHeight + 'px');
+    this.renderer.setStyle(this.positionHighlight.nativeElement, 'display', 'inline');
 
     if (this.options.heightToFontSizeRatio) {
-      this.renderer.setStyle(this.positionHighlight, 'font-size', this.ngxGridboardService.fontSize);
+      this.renderer.setStyle(this.positionHighlight.nativeElement, 'font-size', this.ngxGridboardService.fontSize);
     }
   }
 
   removePositionHighlight() {
-    this.renderer.setStyle(this.positionHighlight, 'display', 'none');
+    this.renderer.setStyle(this.positionHighlight.nativeElement, 'display', 'none');
   }
 
   calculateCellSize() {

@@ -51,14 +51,28 @@ body {
     -webkit-transition: none;
             transition: none;
   }
-  .grid div.position-highlight {
+  .position-highlight1 {
     -webkit-transition: none;
             transition: none;
+      
   }
-    .grid div.position-highlight .inner {
+    .position-highlight1 .inner {
       border: none;
       background: #ccc;
     }
+
+    .position-highlight {
+      -webkit-transition: none;
+      transition: none;
+      position: absolute;
+      border: none;
+      background: #ccc;
+      top: 0px;
+      left: 0px;
+      width: 100px;
+      height: 100px;
+    }
+
   .grid .controls {
     position: absolute;
     top: 0;
