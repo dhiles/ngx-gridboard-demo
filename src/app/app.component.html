@@ -3,6 +3,6 @@
     Welcome to {{ title }}!
   </h1>
   <div *ngIf="laneChange">responsive media size={{ laneChange.mq }} lanes={{ laneChange.lanes }}</div>
-  <button (click)="getItems()">get items</button>
+  <!-- <button (click)="getItems()">get items</button> -->
 </div>
 <gb-gridboard #gridboard [items]="items" [options]="options" (laneChange)="onLaneChange($event)"></gb-gridboard>

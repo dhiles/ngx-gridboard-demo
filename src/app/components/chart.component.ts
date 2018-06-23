@@ -45,8 +45,8 @@ export class ChartComponent implements PanelComponent, OnInit {
     // Set chart options
     self.options = {
       'title': 'How Much Pizza I Ate Last Night',
-      'width': 200,
-      'height': 200
+      'width': 140,
+      'height': 140
     };
 
     // Instantiate and draw our chart, passing in some options.
@@ -67,9 +67,7 @@ export class ChartComponent implements PanelComponent, OnInit {
   }
 
 
-  handleResize() {
-    const width = this.elementRef.nativeElement.offsetWidth;
-    const height = this.elementRef.nativeElement.offsetHeight;
+  handleResize(width, height) {
     this.drawChart(width, height);
   }
 }
