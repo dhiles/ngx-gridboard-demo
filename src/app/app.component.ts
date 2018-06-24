@@ -3,6 +3,7 @@ import { PanelItem, LaneChange } from 'ngx-gridboard';
 import { HeroProfileComponent } from './components/hero-profile.component';
 import { HeroJobAdComponent } from './components/hero-job-ad.component';
 import { ChartComponent } from './components/chart.component';
+import { Observable, Subject, fromEvent, of } from 'rxjs';
 
 
 @Component({
@@ -12,8 +13,8 @@ import { ChartComponent } from './components/chart.component';
 })
 export class AppComponent {
   title = 'the ngx-gridboard demo app';
-  laneChange: LaneChange;
   activeItem: any;
+  laneChanges: Subject<LaneChange> = new Subject();
 
   options = {
     lanes: 5,
@@ -51,7 +52,7 @@ export class AppComponent {
   }
 
   onLaneChange(event: LaneChange) {
-    this.laneChange = event;
+    this.laneChanges.next(event);
   }
 
 
