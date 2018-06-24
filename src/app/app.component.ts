@@ -13,6 +13,7 @@ import { ChartComponent } from './components/chart.component';
 export class AppComponent {
   title = 'the ngx-gridboard demo app';
   laneChange: LaneChange;
+  activeItem: any;
 
   options = {
     lanes: 5,
@@ -52,6 +53,8 @@ export class AppComponent {
   onLaneChange(event: LaneChange) {
     this.laneChange = event;
   }
+
+
 
 
 
