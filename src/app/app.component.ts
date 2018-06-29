@@ -30,15 +30,15 @@ export class AppComponent {
   };
 
   items = [
-    { id: 0, w: 3, h: 1, x: 0, y: 0, panelItem: new PanelItem(HeroProfileComponent, { name: 'Bombasto', bio: 'Brave as they come' }) },
+    { w: 3, h: 1, x: 0, y: 0, panelItem: new PanelItem(HeroProfileComponent, { name: 'Bombasto', bio: 'Brave as they come' }) },
     {
-      id: 1, w: 1, h: 1, x: 4, y: 0, panelItem: new PanelItem(ChartComponent, {
+      w: 1, h: 1, x: 4, y: 0, panelItem: new PanelItem(ChartComponent, {
         headline: 'Hiring for several positions',
         body: 'Submit your resume today!'
       })
     },
     {
-      id: 2, w: 1, h: 2, x: 0, y: 1, panelItem: new PanelItem(HeroJobAdComponent, {
+      w: 1, h: 2, x: 0, y: 1, panelItem: new PanelItem(HeroJobAdComponent, {
         headline: 'Openings in all departments',
         body: 'Apply today'
       })
