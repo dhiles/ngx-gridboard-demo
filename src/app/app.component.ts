@@ -26,7 +26,9 @@ export class AppComponent {
       xs: 2
     },
     direction: 'vertical',
-    highlightColor: '#85C1E9'
+    highlightColor: '#85C1E9',
+    marginPx: 10,
+    borderPx: 10
   };
 
   items = [
