@@ -12,7 +12,7 @@ import { Observable, Subject, fromEvent, of } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'the ngx-gridboard demo app';
+  title = 'the ngx-gridboard 1.0.3 demo app';
   activeItem: any;
   laneChanges: Subject<LaneChange> = new Subject();
 
@@ -28,17 +28,22 @@ export class AppComponent {
     direction: 'vertical',
     highlightColor: '#85C1E9',
     marginPx: 10,
-    borderPx: 10
+    borderPx: 10,
+    gridContainerStyles: {
+      'background-color': 'rgb(171, 171, 196)'
+    },
+    gridItemContainerStyles: {
+    }
   };
 
   items = [
-    { w: 3, h: 1, x: 0, y: 0, panelItem: new PanelItem(HeroProfileComponent, { name: 'Bombasto', bio: 'Brave as they come' }) },
     {
       w: 1, h: 1, x: 4, y: 0, panelItem: new PanelItem(ChartComponent, {
         headline: 'Hiring for several positions',
         body: 'Submit your resume today!'
       })
     },
+    { w: 3, h: 1, x: 0, y: 0, panelItem: new PanelItem(HeroProfileComponent, { name: 'Bombasto', bio: 'Brave as they come' }) },
     {
       w: 1, h: 2, x: 0, y: 1, panelItem: new PanelItem(HeroJobAdComponent, {
         headline: 'Openings in all departments',

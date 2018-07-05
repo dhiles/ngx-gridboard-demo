@@ -25,7 +25,7 @@ export class ChartComponent implements PanelComponent, OnInit {
 
     // Set a callback to run when the Google Visualization API is loaded.
     // google.charts.setOnLoadCallback(this.loadChart);
-    var self = this;
+    const self = this;
     google.charts.setOnLoadCallback(function () {
       self.loadChart(self);
     });
@@ -63,7 +63,7 @@ export class ChartComponent implements PanelComponent, OnInit {
       this.options.height = height;
 
       // Instantiate and draw our chart, passing in some options.
-      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      const chart = new google.visualization.PieChart(document.getElementById('chart_div'));
       chart.draw(this.chartData, this.options);
     }
   }
