@@ -29,6 +29,7 @@ export class AppComponent {
     highlightColor: '#85C1E9',
     marginPx: 10,
     borderPx: 10,
+    headerPx: 40,
     gridContainerStyles: {
       'background-color': 'rgb(171, 171, 196)'
     },
