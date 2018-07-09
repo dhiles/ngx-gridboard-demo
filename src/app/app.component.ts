@@ -59,6 +59,10 @@ export class AppComponent {
     });
   }
 
+  changeLanes() {
+    this.options.lanes -= 1;
+  }
+
   onLaneChange(event: LaneChange) {
     this.laneChanges.next(event);
   }
