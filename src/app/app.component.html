@@ -3,7 +3,10 @@
     Welcome to {{ title }}!
   </h1>
   <div *ngIf="laneChanges | async as laneChange ">responsive media size={{ laneChange.mq }} lanes={{ laneChange.lanes }}</div>
-  <div *ngIf="options.lanes">non-responsive lanes={{ options.lanes }}</div>
-  <button (click)="changeLanes()">change lanes</button>
+  <div *ngIf="true">fixed lanes={{ options.fixedLanes }}</div>
+  <button class="my-button" (click)="decrementLanes()">decrement lanes</button>
+  <button class="my-button" (click)="incrementLanes()">increment lanes</button>
+    
+  
 </div>
 <gb-gridboard #gridboard [items]="items" [options]="options" (laneChange)="onLaneChange($event)"></gb-gridboard>

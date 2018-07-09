@@ -12,12 +12,12 @@ import { Observable, Subject, fromEvent, of } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'the ngx-gridboard 1.0.4 demo app';
+  title = 'the ngx-gridboard 1.0.5 demo app';
   activeItem: any;
   laneChanges: Subject<LaneChange> = new Subject();
 
   options = {
-    lanes: 5,
+    fixedLanes: 5,
     mediaQueryLanes: {
       xl: 5,
       lg: 5,
@@ -37,16 +37,17 @@ export class AppComponent {
     }
   };
 
+
   items = [
     {
-      w: 1, h: 1, x: 4, y: 0, panelItem: new PanelItem(ChartComponent, {
+      id: 0, w: 1, h: 1, x: 4, y: 0, panelItem: new PanelItem(ChartComponent, {
         headline: 'Hiring for several positions',
         body: 'Submit your resume today!'
       })
     },
-    { w: 3, h: 1, x: 0, y: 0, panelItem: new PanelItem(HeroProfileComponent, { name: 'Bombasto', bio: 'Brave as they come' }) },
+    { id: 1, w: 3, h: 1, x: 0, y: 0, panelItem: new PanelItem(HeroProfileComponent, { name: 'Bombasto', bio: 'Brave as they come' }) },
     {
-      w: 1, h: 2, x: 0, y: 1, panelItem: new PanelItem(HeroJobAdComponent, {
+      id: 2, w: 1, h: 2, x: 0, y: 1, panelItem: new PanelItem(HeroJobAdComponent, {
         headline: 'Openings in all departments',
         body: 'Apply today'
       })
@@ -59,8 +60,14 @@ export class AppComponent {
     });
   }
 
-  changeLanes() {
-    this.options.lanes -= 1;
+  decrementLanes() {
+    if (this.options.fixedLanes > 1) {
+      this.options.fixedLanes -= 1;
+    }
+  }
+
+  incrementLanes() {
+    this.options.fixedLanes += 1;
   }
 
   onLaneChange(event: LaneChange) {
