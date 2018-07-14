@@ -10,7 +10,7 @@ import { ChartComponent } from './components/chart.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeroJobAdComponent, 
+    HeroJobAdComponent,
     HeroProfileComponent,
     ChartComponent
   ],
@@ -21,10 +21,10 @@ import { ChartComponent } from './components/chart.component';
     HeroJobAdComponent, HeroProfileComponent
   ],
   providers: [],
-  entryComponents: [ 
-    HeroJobAdComponent, 
+  entryComponents: [
+    HeroJobAdComponent,
     HeroProfileComponent,
-    ChartComponent 
+    ChartComponent
   ],
   bootstrap: [AppComponent]
 })
