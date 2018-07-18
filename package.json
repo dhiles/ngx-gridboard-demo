@@ -1,6 +1,6 @@
 {
   "name": "ngx-gridboard-demo",
-  "version": "1.0.5",
+  "version": "1.0.11",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "core-js": "^2.5.4",
-    "ngx-gridboard": "^1.0.8",
+    "ngx-gridboard": "~1.0.11",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

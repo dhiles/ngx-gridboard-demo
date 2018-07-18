@@ -12,7 +12,7 @@ import { Observable, Subject, fromEvent, of } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'the ngx-gridboard 1.0.8 demo app';
+  title = 'the ngx-gridboard 1.0.11 demo app';
   activeItem: any;
   laneChanges: Subject<LaneChange> = new Subject();
 
@@ -26,9 +26,9 @@ export class AppComponent {
       xs: 2
     },
     direction: 'vertical',
-    highlightColor: '#85C1E9',
+    highlightColor: 'black',
     marginPx: 10,
-    borderPx: 10,
+    borderPx: 2,
     headerPx: 40,
     gridContainerStyles: {
       'background-color': 'rgb(171, 171, 196)'
